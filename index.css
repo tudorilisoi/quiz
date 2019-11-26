@@ -27,6 +27,7 @@ body {
   margin: 20px 0;
 }
 .btn {
+  border: 0;
   background-color: grey;
   border-radius: 5px;
   color: greenyellow;
