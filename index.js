@@ -6,15 +6,25 @@ const answerButtonsElement = document.getElementById('answer-buttons');
 
 let currentQuestionIndex;
 
-startButton.addEventListener('click', startQuiz);
+// startButton.addEventListener('click', startQuiz);
 
-function startQuiz() {
-console.log('started');
-$(`.js-quiz-question`).hide();
-$(`#quiz-status`).hide();
-startButton.classList.add('hide');
-questionContainerElement.classList.remove('hide');
+const CONTAINER = $(`#js-quiz-question`)
+const STATUS_CONTAINER = $(`#quiz-status`)
+const STATUS_WRAPPER = $(`#js-quiz-status-wrapper`)
+const START_INFO_WRAPPER = $(`#js-start-info-wrapper`)
 
+
+function displayStartInfo() {
+    console.log('started');
+    // $(`.js-quiz-question`).hide();
+    // $(`#quiz-status`).hide();
+    // startButton.classList.add('hide');
+    // questionContainerElement.classList.remove('hide');
+
+    $(STATUS_WRAPPER).hide()
+    $(CONTAINER).hide()
+
+    $(START_INFO_WRAPPER).show()
 
 
 }
@@ -22,7 +32,7 @@ function setNextQuestion() {
     showQuestion(currentQuestionIndex);
 }
 function showQuestion() {
-questionElement.innerText = question.question;    
+    questionElement.innerText = question.question;
 }
 
 const STORE = {
@@ -54,15 +64,13 @@ const STORE = {
         }
     ]
 }
-const CONTAINER = $(`.js-quiz-question`)
-const STATUS_CONTAINER = $(`#quiz-status`)
 
 function evaluateAnswer(ev) {
 
     ev.preventDefault()
 
     const answerIndex = $('#answer-form input:checked').val()
- 
+
     if (answerIndex === undefined) {
         alert('please choose an answer!')
         return
@@ -82,6 +90,11 @@ function evaluateAnswer(ev) {
 }
 
 function restartQuiz() {
+
+    $(STATUS_WRAPPER).show()
+    $(CONTAINER).show()
+    $(START_INFO_WRAPPER).hide()
+    
     STORE.currentQuestionIndex = 0
     STORE.score = 0
     STORE.incorrect = 0
@@ -156,9 +169,11 @@ $(() => {
     CONTAINER.on('click', '.js-next-question-button', gotoNextQuestion)
 
     //setup restart handler
-    CONTAINER.on('click', '.js-restart-button', restartQuiz)
+    $('body').on('click', '.js-restart-button', restartQuiz)
+    $('body').on('click', '#js-start-btn', restartQuiz)
 
     //start!
-    displayCurrentQuestion()
+    // displayCurrentQuestion()
+    displayStartInfo()
 })
 
