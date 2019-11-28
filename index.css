@@ -11,7 +11,6 @@ body {
   justify-content: center;
   align-items: center;
   background: cover;
-  background-image:url("https://i.pinimg.com/originals/b0/59/2b/b0592b994c0f467cd447ad5c8fc17021.jpg")
 }
 .container {
   width: 800px;
@@ -19,32 +18,4 @@ body {
   background:rgba(255, 255, 255, 0.8);
   border-radius: 5px;
   padding: 10px;
-}
-.btn-grid {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 10px;
-  margin: 20px 0;
-}
-.btn {
-  border: 0;
-  background-color: grey;
-  border-radius: 5px;
-  color: greenyellow;
-}
-.btn:hover {
-  background-color: orangered;
-}
-.start-btn {
- font-size: 30px; 
- font-weight: bold;
- padding: 2%;
-}
-.controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hide {
-  display: none;
 }
